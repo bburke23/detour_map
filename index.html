@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detour Festival Map</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="detour-page">
+      <section
+        class="detour-map"
+        data-detour-map
+        data-map-src="./assets/detour_map.png"
+        aria-label="Interactive Detour festival map"
+      ></section>
+    </main>
+
+    <script type="module" src="./src/map-data.js"></script>
+    <script type="module" src="./src/detour-map.js"></script>
+  </body>
+</html>

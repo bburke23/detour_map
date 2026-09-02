@@ -1,0 +1,9 @@
+{
+  "name": "detour-map",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build-embed.mjs"
+  }
+}

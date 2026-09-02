@@ -1,0 +1,165 @@
+:root {
+  --detour-ink: #122338;
+  --detour-paper: #8fa7b5;
+  --detour-panel: #f8fbfd;
+  --detour-coral: #ff715f;
+  --detour-gold: #ffe28d;
+  --detour-blue: #314f6f;
+  --detour-shadow: rgba(18, 35, 56, 0.24);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--detour-ink);
+  background: var(--detour-paper);
+}
+
+.detour-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: var(--detour-paper);
+}
+
+.detour-map {
+  width: min(100vw, 720px);
+  margin: 0 auto;
+}
+
+.map-shell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1080 / 1600;
+  overflow: hidden;
+  background: var(--detour-paper);
+}
+
+.map-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hotspot-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.hotspot {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: transparent;
+  background: transparent;
+  clip-path: var(--shape, inset(0 round 8px));
+  cursor: pointer;
+  transform: translateZ(0);
+  transition: filter 160ms ease;
+}
+
+.hotspot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 226, 141, 0);
+  transition: background 160ms ease, box-shadow 160ms ease;
+}
+
+.hotspot span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.hotspot:hover,
+.hotspot:focus-visible {
+  filter: drop-shadow(0 0 6px rgba(18, 35, 56, 0.38));
+  outline: none;
+}
+
+.hotspot:hover::before,
+.hotspot:focus-visible::before {
+  background: rgba(255, 226, 141, 0.3);
+  box-shadow: inset 0 0 0 3px rgba(255, 226, 141, 0.96);
+}
+
+.area-dialog {
+  width: min(92vw, 380px);
+  padding: 22px 22px 24px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--detour-ink);
+  background: var(--detour-panel);
+  box-shadow: 0 24px 80px var(--detour-shadow);
+}
+
+.area-dialog::backdrop {
+  background: rgba(18, 35, 56, 0.42);
+}
+
+.dialog-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--detour-panel);
+  background: var(--detour-ink);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dialog-close:focus-visible {
+  outline: 3px solid var(--detour-gold);
+  outline-offset: 2px;
+}
+
+.area-kicker {
+  margin: 0 0 8px;
+  color: var(--detour-coral);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.area-dialog h2 {
+  margin: 0 42px 10px 0;
+  font-size: clamp(24px, 5vw, 34px);
+  line-height: 1;
+}
+
+.area-dialog p:last-child {
+  margin: 0;
+  color: #35475a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .detour-map {
+    width: 100vw;
+  }
+
+  .hotspot {
+    border-radius: 6px;
+  }
+}
