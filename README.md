@@ -56,3 +56,7 @@ public, then add it to the Canva page as an embed link or iframe:
 Open `index.html` in a browser, or run any static file server from this folder.
 The preview page uses plain scripts so it can load from `file://` in stricter
 browsers.
+
+If GitHub Pages appears to deploy without showing updates, bump the `v=` query
+strings in `index.html` for the stylesheet, scripts, and map image. That forces
+browsers and the Pages CDN to fetch fresh assets.
