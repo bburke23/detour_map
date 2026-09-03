@@ -28,7 +28,8 @@ coordinates so it scales with the image:
 }
 ```
 
-Adjust `x`, `y`, `width`, and `height` to move or resize a hotspot.
+Adjust `x`, `y`, and `width` to move or resize a hotspot. Hotspots render as
+true circles, so `width` controls the circle diameter.
 
 ## Build A Canva-Friendly File
 
@@ -53,3 +54,5 @@ public, then add it to the Canva page as an embed link or iframe:
 ## Local Preview
 
 Open `index.html` in a browser, or run any static file server from this folder.
+The preview page uses plain scripts so it can load from `file://` in stricter
+browsers.

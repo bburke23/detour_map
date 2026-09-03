@@ -15,7 +15,7 @@ maps.forEach((mapRoot, index) => {
       <button class="dialog-close" type="button" aria-label="Close">x</button>
       <p class="area-kicker">Map area</p>
       <h2 id="${titleId}"></h2>
-      <p id="${descriptionId}"></p>
+      <div class="area-description" id="${descriptionId}"></div>
     </dialog>
   `;
 
@@ -31,11 +31,7 @@ maps.forEach((mapRoot, index) => {
     button.className = "hotspot";
     button.style.setProperty("--x", `${area.x}%`);
     button.style.setProperty("--y", `${area.y}%`);
-    button.style.setProperty("--w", `${area.width}%`);
-    button.style.setProperty("--h", `${area.height}%`);
-    if (area.shape) {
-      button.style.setProperty("--shape", area.shape);
-    }
+    button.style.setProperty("--size", `${area.width}%`);
     button.setAttribute("aria-label", `Open ${area.title} details`);
     button.dataset.areaId = area.id;
     button.innerHTML = `<span>${area.title}</span>`;
@@ -49,8 +45,12 @@ maps.forEach((mapRoot, index) => {
   });
 
   function openArea(area) {
-    title.textContent = area.title;
-    description.textContent = area.description;
+    if (area.titleUrl) {
+      title.innerHTML = `<a href="${area.titleUrl}" target="_blank" rel="noopener">${area.title}</a>`;
+    } else {
+      title.textContent = area.title;
+    }
+    description.innerHTML = area.html || `<p>${area.description}</p>`;
 
     if (typeof dialog.showModal === "function") {
       dialog.showModal();
