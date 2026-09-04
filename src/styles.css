@@ -100,12 +100,14 @@ body {
 
 .area-dialog {
   width: min(92vw, 380px);
+  max-height: min(82vh, 760px);
   padding: 22px 22px 24px;
   border: 0;
   border-radius: 8px;
   color: var(--detour-ink);
   background: var(--detour-panel);
   box-shadow: 0 24px 80px var(--detour-shadow);
+  overflow: auto;
 }
 
 .area-dialog::backdrop {
